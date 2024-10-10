@@ -8,6 +8,21 @@ const btnReptiles = document.querySelector("#btnReptiles");
 const gallery = document.querySelector(".gallery");
 const btnLeft = document.querySelector("#btnLeft");
 const btnRight = document.querySelector("#btnRight");
+const btnCategories = document.querySelector('#btnCategories')
+
+/* EVENTOS */
+btnCategories.addEventListener('click', (ev) => {
+    if (ev.target.tagName === 'BUTTON') {
+
+        const texTag = ev.target.id;
+        console.log(texTag)
+    }
+
+
+})
+
+
+
 
 /* FUNCIONES*/
 const conection = async (action) => {
@@ -28,19 +43,32 @@ const conection = async (action) => {
 }
 
 const drawInitialImages = async () => {
+    const arrayBtones = [
+        {
+            categoria: 'reptiles',
+            id: '2078809'
+        },
+        {
+            categoria: 'roedores',
+            id: '28826036',
+        },
+        {
+            categoria: 'felinos',
+            id: '51340'
+
+        }
+    ]
+
     try {
-        const responses = [
-            await conection("photos/51340"),
-            await conection("photos/28826036"),
-            await conection("photos/2078809")
-        ]
-        const buttons = [btnRodens, btnFelines, btnReptiles];
-        responses.forEach((item, index) => {
-            const { src, alt } = item;
+
+
+        arrayBtones.forEach(async ({ categoria, id }) => {
+            const { alt, src } = await conection(`photos/${id}`)
             let img = document.createElement("IMG");
             img.src = src.original;
             img.alt = alt;
             buttons[index].append(img);
+
         });
     } catch (error) {
         throw (error.message)
@@ -62,3 +90,4 @@ const drawImages = async (action) => {
 };
 
 drawInitialImages();
+
