@@ -7,7 +7,7 @@ const gallery = document.querySelector(".gallery");
 const btnLeft = document.querySelector("#btnLeft");
 const btnRight = document.querySelector("#btnRight");
 const btnCategories = document.querySelector('#btnCategories')
-
+const pagination = document.querySelector('.pagination')
 /* EVENTOS */
 btnCategories.addEventListener('click', (ev) => {
     const button = ev.target.closest('BUTTON');
@@ -24,6 +24,11 @@ btnImageSearch.addEventListener('click', (ev) => {
     //console.log(searchText)
     drawImages(searchText)
 });
+
+btnOrientation.addEventListener('change', () => {
+    const key = gallery.dataset.key
+    if (key !== '') drawImages(key)
+})
 
 /* FUNCIONES*/
 const conection = async (action) => {
@@ -65,7 +70,7 @@ const drawInitialImages = async () => {
             let button = document.createElement('BUTTON')
             let container = document.createElement("DIV")
             let img = document.createElement("IMG");
-            img.src = resp.src.original;
+            img.src = resp.src.small;
             img.alt = resp.alt;
             button.innerText = categoria
             button.type = 'button'
@@ -81,22 +86,39 @@ const drawInitialImages = async () => {
 
 const drawImages = async (action) => {
     try {
+        gallery.dataset.key = action
+        gallery.innerHTML = ``;
         const fragment = document.createDocumentFragment()
         //console.log(btnOrientation.value)
         const resp = await conection(`search?query=${action}&orientation=${btnOrientation.value}`);
         resp.photos.forEach(({ src, alt }) => {
             let container = document.createElement('DIV')
             let img = document.createElement("IMG");
-            img.src = src.original;
+            img.src = src.medium;
             img.alt = alt;
             container.append(img)
             fragment.append(container);
         });
         gallery.append(fragment)
+        drawPagination(resp)
     } catch (error) {
         throw (error.message)
     }
 };
+
+const drawPagination = (resp) => {
+    pagination.innerHTML=''
+    const totalPages = Math.ceil(resp.total_results / resp.per_page)
+    //console.log(totalPages)
+    //crear boton delante y para atras
+    let maxPages=10;
+    for (let i=1; i<= maxPages; i++){
+        let button =document.createElement('BUTTON')
+        button.innerText = i
+        if(i==resp.page) button.disabled=true 
+    }
+
+}
 
 drawInitialImages();
 
