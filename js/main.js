@@ -100,25 +100,19 @@ const drawImages = async (action) => {
             fragment.append(container);
         });
         gallery.append(fragment)
-        drawPagination(resp)
+        drawPagination(resp,1)
     } catch (error) {
         throw (error.message)
     }
-};
-
-const drawPagination = (resp) => {
+}
+const drawPagination = (resp,currentPage) => {
     pagination.innerHTML=''
     const totalPages = Math.ceil(resp.total_results / resp.per_page)
-    //console.log(totalPages)
-    //crear boton delante y para atras
     let maxPages=10;
-    for (let i=1; i<= maxPages; i++){
-        let button =document.createElement('BUTTON')
-        button.innerText = i
-        if(i==resp.page) button.disabled=true 
+    for (let i=currentPage; i < currentPage+2; i++){
+        pagination.innerHTML+=`<button>${i}</button>`
     }
 
 }
-
 drawInitialImages();
 
