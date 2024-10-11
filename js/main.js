@@ -1,7 +1,8 @@
 /* VARIABLES */
 const urlBase = 'https://api.pexels.com/v1';
 const searchInput = document.querySelector("input");
-const btnOrientation = document.querySelector("select");
+const btnImageSearch = document.querySelector("#btnImageSearch");
+const btnOrientation = document.querySelector("#btnOrientation");
 const gallery = document.querySelector(".gallery");
 const btnLeft = document.querySelector("#btnLeft");
 const btnRight = document.querySelector("#btnRight");
@@ -17,8 +18,12 @@ btnCategories.addEventListener('click', (ev) => {
     }
 })
 
-
-
+btnImageSearch.addEventListener('click', (ev) => {
+    //ev.preventDefault();
+    const searchText = searchInput.value;
+    //console.log(searchText)
+    drawImages(searchText)
+});
 
 /* FUNCIONES*/
 const conection = async (action) => {
@@ -46,11 +51,11 @@ const drawInitialImages = async () => {
         },
         {
             categoria: 'roedores',
-            id: '28826036',
+            id: '51340',
         },
         {
             categoria: 'felinos',
-            id: '51340'
+            id: '16020397'
         }
     ]
     try {
@@ -77,7 +82,8 @@ const drawInitialImages = async () => {
 const drawImages = async (action) => {
     try {
         const fragment = document.createDocumentFragment()
-        const resp = await conection(`search?query=${action}`);
+        //console.log(btnOrientation.value)
+        const resp = await conection(`search?query=${action}&orientation=${btnOrientation.value}`);
         resp.photos.forEach(({ src, alt }) => {
             let container = document.createElement('DIV')
             let img = document.createElement("IMG");
