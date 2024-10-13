@@ -4,26 +4,71 @@
     box-sizing: border-box;
 }
 
-#btnCategories img{width: 150px;}
-.gallery img {width: 150px;}
+#btnCategories img {
+    width: 150px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    font-family: "Rock Salt", cursive;
 
 
-/* header{
-    width: 100%;
+}
+
+.gallery img {
+    width: 150px;
+}
+
+main {
+    background-color: rgb(168, 168, 168);
+    object-fit: contain;
+    border: 3px solid #373737;
+}
+
+body {
+    background-color: rgb(151, 197, 199);
+
+}
+
+header {
+    width: 97%;
     margin: 20px;
     text-align: center;
+    background-color: rgb(164, 164, 164);
+    font-size: 20px;
+    font-family: Courier;
+    border: 2px;
+    border-color: rgb(128, 128, 128);
+    border-style: solid;
 
+}
+
+.btnImageSearch {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    position: relative;
+    z-index: auto;
+}
+
+.btnImageSearch::after {
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+    display: block;
+    content: "";
+    top: 1%;
+    right: 8px;
+
+    transform: rotate(35deg);
+    transform-origin: -10px 40px;
+}
+.btnOrientation{
+    left: 10px;
+    position: relative;
 }
 
 section {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin: 20px;
-    text-align: center;
-}
-
-.btnCategories{
 
     justify-content: flex-start;
     width: 100%;
@@ -31,4 +76,34 @@ section {
     text-align: center;
 }
 
- */
+.btnCategories {
+
+    justify-content: flex-start;
+    width: 80%;
+    margin: 20px;
+    text-align: center;
+    border-collapse: collapse;
+    border: 3px solid rgb(60, 60, 60);
+}
+
+.gallery{
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.gallery div {
+    padding: 2px;
+}
+
+
+footer {
+    text-align: center;
+}
+
+#gallerySection {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
