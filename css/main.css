@@ -7,42 +7,45 @@
 body {
     background-color: rgb(51, 172, 178);
     font-family: Arial, Helvetica, sans-serif;
-  /*   background-image: url(../assets/fonfo.jpg); */
+    font-size: 1em; 
 }
 
 header {
     max-width: 100%;
-    margin-bottom: 20px;
     padding: 10px;
     text-align: center;
     background-color: rgb(86, 102, 107);
     font-size: 20px;
-    /* font-family: Courier; */
     border: 2px;
     border-color: rgb(60, 60, 60);
     border-style: solid;
 }
 
- main {
+main {
     background-color: rgb(35, 116, 141);
-    /* object-fit: contain; */
     border: 3px solid #373737;
 }
 
 section {
     width: 100%;
-   /*  margin: 10px; */
     text-align: center;
 }
 
 footer {
+    padding: 15px;
     text-align: center;
     color: aliceblue;
+}
+
+#btnCategories {
+    padding-bottom: 10px;
 }
 
 #btnCategories > * {
     width: 30%;
     border: 2px solid rgb(0, 0, 0); 
+    border-radius: 5px;
+    margin: 10px;
 }
 
 #btnCategories div img {
@@ -50,16 +53,18 @@ footer {
 }
 
 .gallery {
-   /*  align-items: center; */
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin: 15px auto;
 }
 
 #gallerySection {
     width: 100%;
     margin: 0 auto;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    padding-top: 10px; 
 }
 
 .gallery img {
@@ -72,20 +77,58 @@ footer {
     padding: 2px;
 }
 
-#btnImageSearch {
-    width: 20px;
-    height: 20px;
-    background-image: url(../assets/lupa.png);
-    border: none;
-    background-size: cover;
-    background-color: transparent;
+#searchSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px; 
 }
 
-/* .btnOrientation {
-    left: 10px;
-    position: relative;
-} 
- */
+#btnImageSearch {
+    background-image: url(../assets/lupa.png);
+    background-size: cover;
+}
+
+#searchSection input{
+    width: 40%; 
+    height: 25px; 
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#searchSection button {
+    width: 25px;
+    height: 25px; 
+}
+
+#searchSection select{
+    width: 10%;
+    height: 25px;
+}
+
+.pagination {
+    padding: 20px; 
+    width: 100%;
+    text-align: center; 
+}
+
+.pagination button, span{
+    margin: 0 5px; 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px;
+    background-color: rgb(86, 102, 107);
+    color: white;
+}
+.pagination span{
+    background-color: transparent;
+    cursor: default; 
+}
+
+.pagination button:hover {
+    background-color: rgb(60, 60, 60);
+}
 
 /* ===========================
             768px

@@ -87,7 +87,7 @@ const conection = async (action) => {
 /**
  * Crea un elemento de imagen y lo añade a un contenedor div
  * @param {string} src - La url de la imagen
- * @param {string} alt - El contenedor con la imagen
+ * @param {string} alt - La descripcion de la imagen
  * @returns {HTMLElement} - El contenedor con la imagen
  */
 const createImgElement = (src, alt) => {
